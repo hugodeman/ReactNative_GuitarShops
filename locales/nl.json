@@ -3,7 +3,12 @@
     "title": "Instellingen",
     "acoustic": "Acoustic",
     "electric": "Electric",
-    "language": "Wijzig taal"
+    "language": "Wijzig taal",
+    "Dutch": "Nederlands",
+    "English": "Engels",
+    "German": "Duits",
+    "French": "Frans",
+    "Russian": "Russisch"
   },
   "home": {
     "title": "Welkom bij de Guitar Hotspot App!"
@@ -12,7 +17,8 @@
     "title": "Bekijk de gitaar winkels in Zuid-Holland:",
     "map": "kaart",
     "list": "lijst",
-    "location": "Mijn locatie"
+    "location": "Mijn locatie",
+    "offline": "Je bent offline. De kaart werkt niet."
   },
   "shopDetails": {
     "back": "Terug",

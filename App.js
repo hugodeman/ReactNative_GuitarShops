@@ -5,6 +5,7 @@ import {createStackNavigator} from "@react-navigation/stack";
 import { Ionicons } from "@expo/vector-icons";
 import {useContext} from "react";
 import { ThemeProvider, ThemeContext } from "./Contexts/ThemeContext";
+import { NetworkProvider } from './Contexts/NetworkContext';
 import { GuitarStores } from "./Contexts/GuitarShops";
 import {useTranslation} from "react-i18next";
 
@@ -58,6 +59,7 @@ function MyTabs() {
 
 export default function App() {
     return (
+        <NetworkProvider>
         <ThemeProvider>
             <GuitarStores>
                 <NavigationContainer>
@@ -77,5 +79,6 @@ export default function App() {
                 </NavigationContainer>
             </GuitarStores>
         </ThemeProvider>
+        </NetworkProvider>
     );
 }

@@ -1,5 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import Constants from 'expo-constants';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import NetInfo from '@react-native-community/netinfo';
 
 const url = Constants.expoConfig?.extra?.GUITARSTORES;
 
@@ -16,25 +18,46 @@ export const GuitarStores = ({ children }) => {
                 }
             });
 
-            if (!result.ok) {
-                throw new Error(`HTTP Error! Status: ${result.status}`);
-            }
+            if (!result.ok) throw new Error(`HTTP Error: ${result.status}`);
 
-            const text = await result.text();
+            const jsonData = await result.json();
 
-            const jsonData = JSON.parse(text);
-            if (!jsonData.guitar_stores) {
-                throw new Error("JSON structuur klopt niet, 'guitar_stores' ontbreekt!");
-            }
+            if (!jsonData.guitar_stores) throw new Error("Geen 'guitar_stores' gevonden!");
 
             setGuitarStores(jsonData.guitar_stores);
+
+            await AsyncStorage.setItem("guitarStores", JSON.stringify(jsonData.guitar_stores));
         } catch (e) {
-            console.error("JSON Parse Error:", e.message);
+            console.error("Fout bij ophalen data:", e.message);
+
+            // caching
+            try {
+                const cached = await AsyncStorage.getItem("guitarStores");
+                if (cached) {
+                    setGuitarStores(JSON.parse(cached));
+                    console.log("Offline data geladen uit AsyncStorage");
+                }
+            } catch (storageError) {
+                console.error("Fout bij lezen van cache:", storageError);
+            }
         }
     };
 
     useEffect(() => {
-        fetchGuitarStores();
+        const unsubscribe = NetInfo.addEventListener(state => {
+            if (state.isConnected) {
+                fetchGuitarStores();
+            } else {
+                (async () => {
+                    const cached = await AsyncStorage.getItem("guitarStores");
+                    if (cached) {
+                        setGuitarStores(JSON.parse(cached));
+                    }
+                })();
+            }
+        });
+
+        return () => unsubscribe();
     }, []);
 
     return (
@@ -42,5 +65,4 @@ export const GuitarStores = ({ children }) => {
             {children}
         </GuitarStoresContext.Provider>
     );
-}
-
+};

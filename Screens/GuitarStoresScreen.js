@@ -1,8 +1,9 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
-import {ActivityIndicator, FlatList, Pressable, SafeAreaView, StyleSheet, Switch, Text, View} from 'react-native';
+import {ActivityIndicator, FlatList, Pressable, SafeAreaView, StyleSheet, Switch, Text, View, Modal} from 'react-native';
 import MapView, {Marker} from 'react-native-maps';
 import {GuitarStoresContext} from "../Contexts/GuitarShops";
 import {ThemeContext} from "../Contexts/ThemeContext";
+import { NetworkContext } from '../Contexts/NetworkContext';
 import {useNavigation} from "@react-navigation/native";
 import * as Location from 'expo-location';
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -12,6 +13,7 @@ import {useTranslation} from "react-i18next";
 export default function GuitarStoresScreen() {
     const { t } = useTranslation();
     const { guitarStores } = useContext(GuitarStoresContext);
+    const { isOffline } = useContext(NetworkContext);
     const navigation = useNavigation();
     const { isElectric } = useContext(ThemeContext);
     const theme = isElectric ? styles.electricTheme : styles.acousticTheme;
@@ -22,6 +24,12 @@ export default function GuitarStoresScreen() {
 
     const [isList, setIsList] = useState(true)
     const [favorites, setFavorites] = useState([]);
+
+    const [modalVisible, setModalVisible] = useState(false);
+
+    useEffect(() => {
+        setModalVisible(isOffline);
+    }, [isOffline]);
 
     useEffect(() => {
         (async () => {
@@ -98,6 +106,26 @@ export default function GuitarStoresScreen() {
 
     return (
         <SafeAreaView style={styles.safeAreaView}>
+            {isOffline && (
+                <Modal
+                    transparent={true}
+                    animationType="slide"
+                    visible={modalVisible}
+                    onRequestClose={() => setModalVisible(false)}
+                >
+                    <View style={styles.modalOverlay}>
+                        <View style={styles.modalContent}>
+                            <Text style={styles.modalText}>
+                                {t('shops.offline')}
+                            </Text>
+                            <Pressable onPress={() => setModalVisible(false)} style={styles.modalButton}>
+                                <Text style={styles.modalButtonText}>OK</Text>
+                            </Pressable>
+                        </View>
+                    </View>
+                </Modal>
+            )}
+
             <View style={[styles.container, theme.background]}>
                 <View>
                     <Text style={[theme.textColor, styles.title]}>{t('shops.title')}</Text>
@@ -267,5 +295,31 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.1,
         shadowRadius: 4,
         elevation: 3,
+    },
+    modalOverlay: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0,0,0,0.5)',
+    },
+    modalContent: {
+        backgroundColor: 'white',
+        padding: 20,
+        borderRadius: 10,
+        alignItems: 'center',
+        width: '80%',
+    },
+    modalText: {
+        fontSize: 16,
+        marginBottom: 10,
+    },
+    modalButton: {
+        backgroundColor: '#2196F3',
+        paddingHorizontal: 20,
+        paddingVertical: 10,
+        borderRadius: 5,
+    },
+    modalButtonText: {
+        color: 'white',
     },
 });

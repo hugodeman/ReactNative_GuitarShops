@@ -3,7 +3,12 @@
     "title": "Settings",
     "acoustic": "Acoustic",
     "electric": "Electric",
-    "language": "Change language"
+    "language": "Change language",
+    "Dutch": "Dutch",
+    "English": "English",
+    "German": "German",
+    "French": "French",
+    "Russian": "Russian"
   },
   "home": {
     "title": "Welcome to the Guitar Hotspot App!"
@@ -12,10 +17,14 @@
     "title": "View the guitar stores in South Holland:",
     "map": "map",
     "list": "list",
-    "location": "My location"
+    "location": "My location",
+    "offline": "You are offline. The map is not available."
   },
   "shopDetails": {
-    "back": "Back"
+    "back": "Back",
+    "notes": "Notes:",
+    "textarea": "Type your note here...",
+    "noNote": "No note"
   },
   "app": {
     "home": "Home",

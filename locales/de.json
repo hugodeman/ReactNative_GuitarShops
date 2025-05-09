@@ -3,7 +3,12 @@
     "title": "Einstellungen",
     "acoustic": "Akustisch",
     "electric": "Elektrisch",
-    "language": "Sprache ändern"
+    "language": "Sprache ändern",
+    "Dutch": "Niederländisch",
+    "English": "Englisch",
+    "German": "Deutsch",
+    "French": "Französisch",
+    "Russian": "Russisch"
   },
   "home": {
     "title": "Willkommen in der Guitar Hotspot App!"
@@ -12,10 +17,14 @@
     "title": "Sieh dir die Gitarrengeschäfte in Südholland an:",
     "map": "Karte",
     "list": "Liste",
-    "location": "Mein Standort"
+    "location": "Mein Standort",
+    "offline": "Du bist offline. Die Karte ist nicht verfügbar."
   },
   "shopDetails": {
-    "back": "Zurück"
+    "back": "Zurück",
+    "notes": "Notizen:",
+    "textarea": "Gib hier deine Notiz ein...",
+    "noNote": "Keine Notiz"
   },
   "app": {
     "home": "Startseite",

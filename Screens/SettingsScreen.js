@@ -50,11 +50,11 @@ export default function SettingsScreen() {
                     style={[styles.picker, theme.picker]}
                     itemStyle={theme.pickerItem}
                 >
-                    <Picker.Item label="Nederlands" value="nl" />
-                    <Picker.Item label="Engels" value="en" />
-                    <Picker.Item label="Frans" value="fr" />
-                    <Picker.Item label="Duits" value="de" />
-                    <Picker.Item label="Russisch" value="ru" />
+                    <Picker.Item label={t('settings.Dutch')} value="nl" />
+                    <Picker.Item label={t('settings.English')} value="en" />
+                    <Picker.Item label={t('settings.French')} value="fr" />
+                    <Picker.Item label={t('settings.German')} value="de" />
+                    <Picker.Item label={t('settings.Russian')} value="ru" />
                 </Picker>
 
             </View>
