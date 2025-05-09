@@ -1,0 +1,25 @@
+{
+  "settings": {
+    "title": "Einstellungen",
+    "acoustic": "Akustisch",
+    "electric": "Elektrisch",
+    "language": "Sprache ändern"
+  },
+  "home": {
+    "title": "Willkommen in der Guitar Hotspot App!"
+  },
+  "shops": {
+    "title": "Sieh dir die Gitarrengeschäfte in Südholland an:",
+    "map": "Karte",
+    "list": "Liste",
+    "location": "Mein Standort"
+  },
+  "shopDetails": {
+    "back": "Zurück"
+  },
+  "app": {
+    "home": "Startseite",
+    "shops": "Geschäfte",
+    "settings": "Einstellungen"
+  }
+}

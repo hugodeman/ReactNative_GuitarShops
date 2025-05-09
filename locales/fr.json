@@ -1,0 +1,25 @@
+{
+  "settings": {
+    "title": "Paramètres",
+    "acoustic": "Acoustique",
+    "electric": "Électrique",
+    "language": "Changer de langue"
+  },
+  "home": {
+    "title": "Bienvenue dans l'application Guitar Hotspot !"
+  },
+  "shops": {
+    "title": "Découvrez les magasins de guitares en Hollande-Méridionale :",
+    "map": "carte",
+    "list": "liste",
+    "location": "Ma position"
+  },
+  "shopDetails": {
+    "back": "Retour"
+  },
+  "app": {
+    "home": "Accueil",
+    "shops": "Magasins",
+    "settings": "Paramètres"
+  }
+}

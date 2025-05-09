@@ -1,0 +1,28 @@
+{
+  "settings": {
+    "title": "Instellingen",
+    "acoustic": "Acoustic",
+    "electric": "Electric",
+    "language": "Wijzig taal"
+  },
+  "home": {
+    "title": "Welkom bij de Guitar Hotspot App!"
+  },
+  "shops": {
+    "title": "Bekijk de gitaar winkels in Zuid-Holland:",
+    "map": "kaart",
+    "list": "lijst",
+    "location": "Mijn locatie"
+  },
+  "shopDetails": {
+    "back": "Terug",
+    "notes": "Notities:",
+    "textarea": "Type hier je notitie...",
+    "noNote": "Geen notitie"
+  },
+  "app": {
+    "home": "Home",
+    "shops": "Winkels",
+    "settings": "Instellingen"
+  }
+}
